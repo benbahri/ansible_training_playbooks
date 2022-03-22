@@ -1,0 +1,6 @@
+---
+user: sami
+user_group: wheel
+user_home: /dev/null
+user_shell: /bin/false
+ 

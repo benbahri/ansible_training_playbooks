@@ -1,0 +1,15 @@
+---
+- name: Install package and print log
+  hosts: webservers
+  tasks:
+  - name: git installed
+    yum:
+      name: git
+      state: latest
+      update_cache: yes
+    become: yes
+    register: install_result
+
+  - debug: 
+      var: install_result.results
+      #msg: Le resultat est {{install_result}}

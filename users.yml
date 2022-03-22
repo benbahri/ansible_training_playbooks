@@ -1,0 +1,16 @@
+---
+- name: create users from vars
+  hosts: webservers
+  become: yes
+  vars:
+    user: sami
+    user_group: wheel
+    user_home: /dev/null
+    user_shell: /bin/false
+  tasks:
+  - name: user created
+    user:
+      name: "{{ user }}"
+      group: "{{ user_group }}"
+      home: "{{ user_home }}"
+      shell:  "{{ user_shell }}"
