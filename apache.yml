@@ -9,16 +9,24 @@
     yum:
       name: httpd
       state: latest
-#  - name: Latest apache version installed
-#    yum: name=httpd state=latest
+    tags: 
+    - packages
 
   - name: apache server started and enabled
     systemd:
       name: httpd
       state: started
       enabled: yes
+    tags:
+    - service
 
   - name: index.html deployed
     copy:
       src: index.html
       dest: /var/www/html/
+    tags:
+    - deploy
+
+  - debug: msg="Always run"
+    tags:
+    - always
