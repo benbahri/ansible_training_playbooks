@@ -3,14 +3,20 @@
   hosts: webservers
   become: yes
   vars:
-    user: sami
+    username: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          62323466343038346161353733383464386464376433343761326462356130653437666234666330
+          6462613163643038366137356264393137363637306365660a376661626466653762393536386262
+          31663561636134616361363435616231306135363433393636316134626435323432343732366338
+          3538633538313961330a613866393035323938303765623834376536333433373535666531643965
+          6563
     user_group: wheel
     user_home: /dev/null
     user_shell: /bin/false
   tasks:
   - name: user created
     user:
-      name: "{{ user }}"
+      name: "{{ username }}"
       group: "{{ user_group }}"
       home: "{{ user_home }}"
       shell:  "{{ user_shell }}"

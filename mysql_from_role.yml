@@ -1,0 +1,16 @@
+---
+- name: install mysql from role
+  hosts: dbservers
+  gather_facts: yes
+  vars:
+    mysql_root_password: root
+  roles:
+  - role: geerlingguy.mysql
+    become: yes
+  - role: geerlingguy.phpmyadmin
+    become: yes
+  tasks:
+  - name: install apache from role
+    include_role:
+      name: geerlingguy.apache
+    when: ansible_os_family == "Debian"

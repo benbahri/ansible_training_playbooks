@@ -25,9 +25,18 @@ web_dev
 web_prod
 db_prod
 
+[windows]
+192.168.60.10
+
 [webservers:vars]
 ansible_user=vagrant
 
 [dbservers:vars]
 ansible_user=vagrant
 ansible_ssh_pass=vagrant
+
+[windows:vars]
+ansible_user=vagrant
+ansible_password=vagrant
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
