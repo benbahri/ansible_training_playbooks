@@ -1,0 +1,14 @@
+---
+- name: Demo Hash
+  hosts: webservers
+  become: yes
+  tasks:
+  - name: create users from hash
+    user:
+      name: "{{item.name}}"
+      groups: "{{item.groups}}"
+      shell: "{{item.shell}}"
+    loop:
+    - { name: 'joe', groups: 'wheel', shell: '/bin/bash' }
+    - { name: 'jane', groups: 'wheel', shell: '/bin/sh' }
+    - { name: 'tomcat', groups: 'adm', shell: '/bin/false' }

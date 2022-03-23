@@ -1,0 +1,17 @@
+---
+- name: configurer les services httpd
+  hosts: webservers
+  become: yes
+  tasks:
+  - name: Send configuration file
+    copy:
+      src: httpd.conf
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+    - restart service
+
+  handlers:
+  - name: restart service
+    systemd:
+      name: httpd
+      state: restarted

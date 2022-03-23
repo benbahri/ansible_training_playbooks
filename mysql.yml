@@ -1,0 +1,10 @@
+---
+- name: Install mysql server
+  hosts: all
+  gather_facts: true
+  become: yes
+  tasks:
+  - name: mysql installed
+    yum:
+      name: mysql-server
+    when: (ansible_os_family == "Debian") and (ansible_memtotal_mb >= 900)

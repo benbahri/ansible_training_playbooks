@@ -1,0 +1,7 @@
+<body>
+<center>
+<h1>The hostname of this server is {{ ansible_fqdn | default('app server') | upper }}</h1>
+<h2>It is running on {{ ansible_os_family | default('linux') | upper }} system</h2>
+<h3>This is a {{ stage | default(omit) | replace('dev', 'development') | replace('prod', 'production')| capitalize}} server</h3>
+</center>
+</body>

@@ -1,0 +1,13 @@
+---
+- name: loop demo
+  hosts: webservers
+  become: yes
+  tasks:
+  - name: check if service is started
+    service:
+      name: "{{item}}"
+      state: started
+    with_items:
+    - sshd
+    - httpd
+    

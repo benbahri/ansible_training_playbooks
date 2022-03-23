@@ -1,0 +1,6 @@
+---
+- name: read from file
+  hosts: all
+  tasks:
+  - debug:
+      msg: "{{ lookup('ansible_version')}}"
